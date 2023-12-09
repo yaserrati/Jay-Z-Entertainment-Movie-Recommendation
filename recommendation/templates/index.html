@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay-Z Entertainment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #038DFE;
+            padding: 1em;
+            color: #fff;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        section {
+            margin-bottom: 2em;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2em;
+        }
+
+        input[type="text"] {
+            padding: 0.5em;
+            width: 60%;
+            font-size: 1em;
+            border: none;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            font-size: 1em;
+            background-color: #038DFE;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #025FAB;
+        }
+
+        .movie-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .movie-card {
+            border: 1px solid #333;
+            padding: 1em;
+            margin: 1em;
+            background-color: #222;
+            text-align: left;
+            max-width: 400px;
+        }
+
+        .movie-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 0.5em;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Jay-Z Entertainment</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Search for a Movie</h2>
+            <form action="/search" method="POST">
+                <input type="text" name="query" placeholder="Search for a movie">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        
+        <section>
+            <h2>Top Rated Movies</h2>
+        
+            <div class="movie-table">
+                <!-- Schindler's List -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/schindlers_list.jpg') }}" alt="Schindler's List">
+                    <h3>Schindler's List (1993)</h3>
+                    <p>Rating: R | Duration: 195 min | Genres: Biography, Drama, History</p>
+                    <p>Director: Steven Spielberg</p>
+                    <p>Stars: Liam Neeson, Ben Kingsley, Ralph Fiennes</p>
+                    <p>Plot: In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</p>
+                </div>
+            
+                <!-- American Beauty -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/american_beauty.jpg') }}" alt="American Beauty">
+                    <h3>American Beauty (1999)</h3>
+                    <p>Rating: R | Duration: 122 min | Genres: Drama</p>
+                    <p>Director: Sam Mendes</p>
+                    <p>Stars: Kevin Spacey, Annette Bening, Thora Birch</p>
+                    <p>Plot: A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend.</p>
+                </div>
+            
+                <!-- One Flew Over the Cuckoo's Nest -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/one_flew_over_the_cuckoos_nest.jpg')}}"  alt="One Flew Over the Cuckoo's Nest">
+                    <h3>One Flew Over the Cuckoo's Nest (1975)</h3>
+                    <p>Rating: R | Duration: 133 min | Genres: Drama</p>
+                    <p>Director: Milos Forman</p>
+                    <p>Stars: Jack Nicholson, Louise Fletcher, Michael Berryman</p>
+                    <p>Plot: A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.</p>
+                </div>
+
+                <!-- Spring, Summer, Fall, Winter... -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/spring_summer_fall_winter.jpg')}}" alt="Spring, Summer, Fall, Winter...">
+                    <h3>Spring, Summer, Fall, Winter...</h3>
+                    <p>Rating: [Add Rating] | Duration: [Add Duration] | Genres: Drama</p>
+                    <p>Director: Kim Ki-duk</p>
+                    <p>Stars: Oh Young-soo, Kim Ki-duk</p>
+                    <p>Plot: A visually stunning meditation on the cycles of life, told through the experiences of a Buddhist monk and his young apprentice.</p>
+                </div>
+
+                <!-- Incendies -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/incendies.jpg')}}" alt="Incendies">
+                    <h3>Incendies (2010)</h3>
+                    <p>Rating: R | Duration: 130 min | Genres: Drama, Mystery, War</p>
+                    <p>Director: Denis Villeneuve</p>
+                    <p>Stars: Lubna Azabal, Mélissa Désormeaux-Poulin, Maxim Gaudette</p>
+                    <p>Plot: Twins journey to the Middle East to discover their family history and fulfill their mother's last wishes.</p>
+                </div>
+
+                <!-- WALL·E -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/wall_e.jpg')}}" alt="WALL·E">
+                    <h3>WALL·E (2008)</h3>
+                    <p>Rating: G | Duration: 98 min | Genres: Animation, Adventure, Family</p>
+                    <p>Director: Andrew Stanton</p>
+                    <p>Stars: Ben Burtt, Elissa Knight, Jeff Garlin</p>
+                    <p>Plot: In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.</p>
+                </div>
+
+                <!-- Amélie -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/amelie.jpg')}}" alt="Amélie">
+                    <h3>Amélie (2001)</h3>
+                    <p>Rating: R | Duration: 122 min | Genres: Comedy, Romance</p>
+                    <p>Director: Jean-Pierre Jeunet</p>
+                    <p>Stars: Audrey Tautou, Mathieu Kassovitz, Rufus</p>
+                    <p>Plot: Amélie, an innocent and naive girl in Paris, with her own sense of justice, decides to help those around her and along the way, discovers love.</p>
+                </div>
+
+                <!-- Pirates of the Caribbean: The Curse of the Black Pearl -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/pirates_of_the_caribbean.jpg')}}" alt="Pirates of the Caribbean">
+                    <h3>Pirates of the Caribbean: The Curse of the Black Pearl (2003)</h3>
+                    <p>Rating: PG-13 | Duration: 143 min | Genres: Action, Adventure, Fantasy</p>
+                    <p>Director: Gore Verbinski</p>
+                    <p>Stars: Johnny Depp, Geoffrey Rush, Orlando Bloom</p>
+                    <p>Plot: Blacksmith Will Turner teams up with eccentric pirate "Captain" Jack Sparrow to save his love, the governor's daughter, from Jack's former pirate allies who are now undead.</p>
+                </div>
+                <!-- Breaking Bad -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/breaking_bad.jpg')}}" alt="Breaking Bad">
+                    <h3>Breaking Bad (2008-2013)</h3>
+                    <p>A high school chemistry teacher turned methamphetamine manufacturer navigates the dangerous world of drug trade.</p>
+                </div>
+
+                <!-- Game of Thrones -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/game_of_thrones.jpg')}}" alt="Game of Thrones">
+                    <h3>Game of Thrones (2011-2019)</h3>
+                    <p>Based on George R.R. Martin's "A Song of Ice and Fire" series, this epic fantasy series follows the power struggles among noble families.</p>
+                </div>
+
+                <!-- The Sopranos -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/the_sopranos.jpg')}}" alt="The Sopranos">
+                    <h3>The Sopranos (1999-2007)</h3>
+                    <p>This groundbreaking crime drama revolves around mob boss Tony Soprano as he tries to balance the demands of his crime family with those of his personal life.</p>
+                </div>
+
+                <!-- Stranger Things -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/stranger_things.jpg')}}" alt="Stranger Things">
+                    <h3>Stranger Things (2016-present)</h3>
+                    <p>A group of kids in the 1980s encounters supernatural forces and government conspiracies while searching for their missing friend.</p>
+                </div>
+
+                <!-- The Crown -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/the_crown.jpeg')}}" alt="The Crown">
+                    <h3>The Crown (2016-present)</h3>
+                    <p>This historical drama chronicles the reign of Queen Elizabeth II and the events that shaped the second half of the 20th century.</p>
+                </div>
+                <!-- The Blacklist -->
+                <div class="movie-card">
+                    <img src="{{ url_for('static', filename='img/the_blacklist.jpg') }}" alt="The Blacklist">
+                    <h3>The Blacklist</h3>
+                    <p>Rating: TV-14 | Genres: Crime, Drama, Mystery</p>
+                    <p>Creator: Jon Bokenkamp</p>
+                    <p>Stars: James Spader, Megan Boone, Diego Klattenhoff</p>
+                    <p>Plot: A former government agent turned high-profile criminal turns himself in, offering to help the FBI track down and apprehend other criminals on his "blacklist."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

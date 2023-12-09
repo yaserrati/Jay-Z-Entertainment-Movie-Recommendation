@@ -8,9 +8,9 @@ limiter = Limiter(get_remote_address, app=app, default_limits=["100000 per day",
 
 def read_data_files():
     # Read data from CSV files and return DataFrames
-    u_data = pd.read_csv('C:/Users/YouCode/Desktop/saad/2023-11-15_Kafka_Memegraph_Neo4j_Movies_Recommendation/Live_Movies_Analysis_Kafka_And_Memgraph/api/data/u.data', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
-    u_item = pd.read_csv('C:/Users/YouCode/Desktop/saad/2023-11-15_Kafka_Memegraph_Neo4j_Movies_Recommendation/Live_Movies_Analysis_Kafka_And_Memgraph/api/data/u.item', sep='|', encoding='latin-1', header=None, names=['movieId', 'title', 'release_date', 'video_release_date', 'IMDb_URL', 'unknown', 'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'])
-    u_user = pd.read_csv('C:/Users/YouCode/Desktop/saad/2023-11-15_Kafka_Memegraph_Neo4j_Movies_Recommendation/Live_Movies_Analysis_Kafka_And_Memgraph/api/data/u.user', sep='|', names=['userId', 'age', 'gender', 'occupation', 'zipcode'])
+    u_data = pd.read_csv('C:/Users/YouCode/Desktop/Recommandation de Films Jay-Z Entertainment/Jay-Z-Entertainment-Movie-Recommendation/api/data/u.data', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
+    u_item = pd.read_csv('C:/Users/YouCode/Desktop/Recommandation de Films Jay-Z Entertainment/Jay-Z-Entertainment-Movie-Recommendation/api/data/u.item', sep='|', encoding='latin-1', header=None, names=['movieId', 'title', 'release_date', 'video_release_date', 'IMDb_URL', 'unknown', 'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'])
+    u_user = pd.read_csv('C:/Users/YouCode/Desktop/Recommandation de Films Jay-Z Entertainment/Jay-Z-Entertainment-Movie-Recommendation/api/data/u.user', sep='|', names=['userId', 'age', 'gender', 'occupation', 'zipcode'])
     return u_data, u_item, u_user
 
 def extract_genres(row):
@@ -39,6 +39,11 @@ def paginate_data(data, page_number, per_page):
     end = start + per_page
     return data[start:end]
 
+def get_movie_recommendations(user_id):
+    # Placeholder for movie recommendations (replace with your recommendation logic)
+    # For now, it returns a list of top-rated movies
+    return ["Terminator 2", "The Shawshank Redemption", "The Godfather"]
+
 @app.route('/movies/page<int:page_number>', methods=['GET'])
 @limiter.limit("70 per minute")
 def get_movie_data(page_number):
@@ -66,6 +71,13 @@ def get_movie_data(page_number):
         "total_pages": total_pages,
         "results": paginated_data
     })
+
+# @app.route('/recommendations/<int:user_id>', methods=['GET'])
+# @limiter.limit("70 per minute")
+# def get_recommendations(user_id):
+#     # Get movie recommendations for the specified user (replace with your recommendation logic)
+#     recommendations = get_movie_recommendations(user_id)
+#     return jsonify({"user_id": user_id, "recommendations": recommendations})
 
 if __name__ == '__main__':
     app.run(debug=True)
