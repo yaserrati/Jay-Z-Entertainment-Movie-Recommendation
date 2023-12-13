@@ -1,6 +1,7 @@
 import requests
 from confluent_kafka import Producer
 import time
+import json  # Added to serialize the user_data dictionary
 
 # Set up Kafka Producer
 conf = {
@@ -19,6 +20,9 @@ def fetch_data_and_produce(page_number):
         movie_data = response.json()
         if movie_data and 'results' in movie_data:
             for item in movie_data['results']:
+                # Serialize user_data dictionary to JSON
+                user_data_json = json.dumps(item.get("user_data", {}))
+                item["user_data"] = user_data_json
                 producer.produce('movies', value=str(item))
                 producer.flush()
                 movie = item["movie"]["movieId"]

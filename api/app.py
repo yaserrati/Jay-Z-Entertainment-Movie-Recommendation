@@ -21,13 +21,19 @@ def extract_genres(row):
 
 def create_modified_json_entry(row):
     # Create JSON entry for each row in the DataFrame
+    user_info = {
+        "userId": str(row['userId']),
+        "age": str(row['age']),
+        "gender": row['gender'],
+        "occupation": row['occupation']
+    }
     movie_info = {
         "movieId": str(row['movieId']),
         "title": row['title'],
         "genres": row['genres']
     }
     return {
-        "userId": str(row['userId']),
+        "user": user_info,
         "movie": movie_info,
         "rating": str(row['rating']),
         "timestamp": str(row['timestamp'])
